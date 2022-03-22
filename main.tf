@@ -1,18 +1,9 @@
 terraform {
-  required_version = ">= 1.1.7"
-  required_providers {
-    aws = ">= 3.37"
-  }
+ backend "remote" {
+    organization = "ilg-mentoria-diogenes"
 
-  backend "s3" {
-    bucket = "ilg-diogenes-tfstate"
-    key    = "terraform.tfstate"
-    region = "us-east-1"
+    workspaces {
+      name = "aws-enviroment"
+    }
   }
-}
-
-provider "aws" {
-  profile                 = "ilg-mentoria"
-  shared_credentials_file = "~/.aws/credentials"
-  region                  = "us-east-1"
 }
