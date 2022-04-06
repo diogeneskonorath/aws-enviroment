@@ -9,7 +9,7 @@ terraform {
 }
 
 module "client-vpc"{
-  source       ="git::ssh://git@github.com/aws-vpc.git"
+  source       ="git::ssh://git@github.com/diogeneskonorath/aws-vpc.git"
   vpc_cidr     = var.vpc_cidr
   vpc_name     = var.vpc_name
   private_subnets = module.client-vpc.private_subnets
