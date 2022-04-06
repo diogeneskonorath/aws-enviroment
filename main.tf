@@ -1,11 +1,19 @@
 terraform {
-  backend "remote" {
-    organization = "ilg-mentoria-diogenes"
+  required_version = ">= 1.1.5"
+  required_providers {
+    aws = ">= 3"
+  }
 
+  cloud {
+    organization = "ilg-mentoria-diogenes"
     workspaces {
       name = "aws-enviroment"
     }
   }
+}
+
+provider "aws" {
+  region = "us-east-1"
 }
 
 module "client-vpc"{
