@@ -11,9 +11,9 @@ terraform {
 module "client-vpc"{
   source       ="git@github.com:diogeneskonorath/aws-vpc.git"
   vpc_cidr     = var.vpc_cidr
-  vpc_name     = var.environment
-  nat_count    = 1
-  cluster_name = var.cluster_name
-  environment  = var.environment
-  aws_region   = var.aws_region
+  vpc_name     = var.vpc_name
+  private_subnets = module.client-vpc.private_subnets
+  public_subnets = module.client-vpc.public_subnets
+  nat_ips = module.client-vpc.nat_ips
+  nat_gateway = module.client-vpc.nat_gateway
 }
