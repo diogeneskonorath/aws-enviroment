@@ -16,12 +16,13 @@ provider "aws" {
   region = "us-east-1"
 }
 
-module "client-vpc"{
-  source       ="git::ssh://git@github.com/diogeneskonorath/aws-vpc.git"
-  vpc_cidr     = var.vpc_cidr
-  vpc_name     = var.vpc_name
+module "client-vpc" {
+  source          = "app.terraform.io/ilg-mentoria-diogenes/vpc/aws"
+  version         = "1.0.0"
+  vpc_cidr        = var.vpc_cidr
+  vpc_name        = var.vpc_name
   private_subnets = module.client-vpc.private_subnets
-  public_subnets = module.client-vpc.public_subnets
-  nat_ips = module.client-vpc.nat_ips
-  nat_gateway = module.client-vpc.nat_gateway
+  public_subnets  = module.client-vpc.public_subnets
+  nat_ips         = module.client-vpc.nat_ips
+  nat_gateway     = module.client-vpc.nat_gateway
 }
