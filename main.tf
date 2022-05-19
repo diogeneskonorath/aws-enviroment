@@ -26,3 +26,10 @@ module "client-vpc" {
   nat_ips         = module.client-vpc.nat_ips
   nat_gateway     = module.client-vpc.nat_gateway
 }
+
+module "eks" {
+  source         = "app.terraform.io/ilg-mentoria-diogenes/eks/aws"
+  version        = "1.0.0"
+  cluster_name   = var.cluster_name
+  private_subnet = module.client-vpc.private_subnets
+}
